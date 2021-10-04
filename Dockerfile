@@ -53,5 +53,5 @@ RUN mvn clean package -DskipTests
 WORKDIR /home/centos
 
 # change the runner file permissions
-RUN chmod 777 benchmark
-CMD ["./benchmark", "-h"]
+RUN chmod 777 run
+CMD ["./run", "-h"]
