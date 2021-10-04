@@ -38,7 +38,7 @@ This includes following benchmarks pre-installed and ready to be used:
   ******************************************************************************
   *         This tool is used to run the benchmarks on YugabyteDB              *
 
-     Syntax: ./benchmark [tpccbenchmark/sysbench/yb-sample-apps/ycsb] [params]
+     Syntax: ./run [tpccbenchmark/sysbench/yb-sample-apps/ycsb] [params]
 
       Benchmark Options:
 
