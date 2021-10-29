@@ -33,7 +33,7 @@ case $1 in
   sysbench)
     echo "***************************** SYSBENCH BENCHMARK *****************************"
     cd /home/centos/code/sysbench
-    sysbench "$@"
+    "$@"
     ;;
   yb-sample-apps)
 

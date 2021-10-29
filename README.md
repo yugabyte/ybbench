@@ -27,7 +27,7 @@ This includes following benchmarks pre-installed and ready to be used:
    ```
 - #### Get the benchmark help by running the container
    ```shell
-    docker run -it yugabytedb/ybbench:latest
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest
    ```
   Above run command will print out following help
   ```shell
@@ -51,44 +51,44 @@ This includes following benchmarks pre-installed and ready to be used:
   ```
 - #### Get specific benchmark help(-h/--help)
    ```shell
-    docker run -it yugabytedb/ybbench:latest ./run <benchmark> --help
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run <benchmark> --help
     # example:
-    # docker run -it yugabytedb/ybbench:latest ./run tpccbenchmark -h
+    # docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run tpccbenchmark -h
    ```
   
 - #### Run specific Benchmark
   - Run sample tpcc workload(Provide comma separated list on nodes). More info can be found on [TPCC](https://github.com/yugabyte/tpcc) repository.
     ```shell
     # create tpcc db
-    docker run -it yugabytedb/ybbench:latest ./run tpccbenchmark --create=true --nodes=<node1-ip,node2-ip,node3-ip>
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run tpccbenchmark --create=true --nodes=<node1-ip,node2-ip,node3-ip>
     
     # load the data
-    docker run -it yugabytedb/ybbench:latest ./run tpccbenchmark --load=true --nodes=<node1-ip,node2-ip,node3-ip> --warehouses=10 --loaderthreads=10
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run tpccbenchmark --load=true --nodes=<node1-ip,node2-ip,node3-ip> --warehouses=10 --loaderthreads=10
     
     # execute phase
-    docker run -it yugabytedb/ybbench:latest ./run tpccbenchmark --execute=true --nodes=<node1-ip,node2-ip,node3-ip> --warehouses=10 --warmup-time-secs=0    
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run tpccbenchmark --execute=true --nodes=<node1-ip,node2-ip,node3-ip> --warehouses=10 --warmup-time-secs=0    
     ```
     
   - Run sample sysbench workload. More info can be found on [SYSBENCH](https://github.com/yugabyte/sysbench) repository. 
     ```shell
     # cleanup phase
-    docker run -it yugabytedb/ybbench:latest ./run sysbench oltp_insert --threads=10 --time=30 --table_size=10000 --tables=1 --warmup-time=0 --range_key_partitioning=false --range_selects=true --thread-init-timeout=30 --serial_cache_size=1000 --db-driver=pgsql --pgsql-db=yugabyte --pgsql-port=5433 --pgsql-user=yugabyte --pgsql-host=<node1-ip,node2-ip,node3-ip> cleanup
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run sysbench oltp_insert --threads=10 --time=30 --table_size=10000 --tables=1 --warmup-time=0 --range_key_partitioning=false --range_selects=true --thread-init-timeout=30 --serial_cache_size=1000 --db-driver=pgsql --pgsql-db=yugabyte --pgsql-port=5433 --pgsql-user=yugabyte --pgsql-host=<node1-ip,node2-ip,node3-ip> cleanup
     # prepare phase
-    docker run -it yugabytedb/ybbench:latest ./run sysbench oltp_insert --threads=10 --time=30 --table_size=10000 --tables=1 --warmup-time=0 --range_key_partitioning=false --range_selects=true --thread-init-timeout=30 --serial_cache_size=1000 --db-driver=pgsql --pgsql-db=yugabyte --pgsql-port=5433 --pgsql-user=yugabyte --pgsql-host=<node1-ip,node2-ip,node3-ip> prepare
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run sysbench oltp_insert --threads=10 --time=30 --table_size=10000 --tables=1 --warmup-time=0 --range_key_partitioning=false --range_selects=true --thread-init-timeout=30 --serial_cache_size=1000 --db-driver=pgsql --pgsql-db=yugabyte --pgsql-port=5433 --pgsql-user=yugabyte --pgsql-host=<node1-ip,node2-ip,node3-ip> prepare
     # run phase
-    docker run -it yugabytedb/ybbench:latest ./run sysbench oltp_insert --threads=10 --time=30 --table_size=10000 --tables=1 --warmup-time=0 --range_key_partitioning=false --range_selects=true --thread-init-timeout=30 --serial_cache_size=1000 --db-driver=pgsql --pgsql-db=yugabyte --pgsql-port=5433 --pgsql-user=yugabyte --pgsql-host=<node1-ip,node2-ip,node3-ip> run
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run sysbench oltp_insert --threads=10 --time=30 --table_size=10000 --tables=1 --warmup-time=0 --range_key_partitioning=false --range_selects=true --thread-init-timeout=30 --serial_cache_size=1000 --db-driver=pgsql --pgsql-db=yugabyte --pgsql-port=5433 --pgsql-user=yugabyte --pgsql-host=<node1-ip,node2-ip,node3-ip> run
     ```
   - Run ycsb workload. More info can be found on [YCSB](https://github.com/yugabyte/ycsb) repository.
     ```shell
     # load
-    docker run -it yugabytedb/ybbench:latest ./run ycsb load basic -P workloads/workloada
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run ycsb load basic -P workloads/workloada
      
     # run
-    docker run -it yugabytedb/ybbench:latest ./run ycsb run basic -P workloads/workloada
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run ycsb run basic -P workloads/workloada
     ```
   - Run yb-sample-apps workload. More info can be found on [YB-SAMPLE-APPS](https://github.com/yugabyte/yb-sample-apps) repository.
     ```shell
-    docker run -it yugabytedb/ybbench:latest ./run yb-sample-apps --workload CassandraKeyValue --value_size 16 --num_unique_keys 1000000 --num_threads_read 0 --num_threads_write 256 --nodes <node1-ip>:9042,<node2-ip>:9042,<node3-ip>:9042 --use_ascii_values create_table_name PerfTest_0 --output_json_metrics 
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run yb-sample-apps --workload CassandraKeyValue --value_size 16 --num_unique_keys 1000000 --num_threads_read 0 --num_threads_write 256 --nodes <node1-ip>:9042,<node2-ip>:9042,<node3-ip>:9042 --use_ascii_values create_table_name PerfTest_0 --output_json_metrics 
     ```
 ## Build from source code
 You can build the docker image from the specific branches of respective benchmark repositories.
