@@ -72,7 +72,7 @@ This includes following benchmarks pre-installed and ready to be used:
     To modify the workload related properties in TPCC -[workload_all.xml](https://github.com/yugabyte/tpcc/blob/master/config/workload_all.xml), you can mount the file as a volume.
     ```shell
     # download the file
-    wget wget https://raw.githubusercontent.com/yugabyte/tpcc/master/config/workload_all.xml
+    wget https://raw.githubusercontent.com/yugabyte/tpcc/master/config/workload_all.xml
     
     # modify workload_all.xml in any editor and run the benchmark
     docker run -v $(pwd)/workload_all.xml:/home/centos/code/tpcc/config/workload_all.xml --name ybbench --rm -it \
