@@ -145,6 +145,10 @@ To achieve this, you can run the ybbench in interactive mode using following doc
     
     #inside the docker container, the code is located in /home/centos/code
     cd /home/centos/code/<benchmark_repo_name>
+    
+    # modify the respective properties files and run the benchmark
+    cd /home/centos/
+    ./run <benchmark> <params>
    ```
 
 <img src="https://www.yugabyte.com/wp-content/uploads/2021/05/yb_horizontal_alt_color_RGB.png" align="center" alt="YugabyteDB" width="50%"/>
