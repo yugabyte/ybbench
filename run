@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Copyright (c) YugaByte, Inc.
+
+set -euo pipefail
+
+Helper () {
+  echo
+  echo "******************************************************************************"
+  echo "*                                                                            *"
+  echo "*                         YugabyteDB Benchmark Help                          *"
+  echo "*                                                                            *"
+  echo "******************************************************************************"
+  echo "*         This tool is used to run the benchmarks on YugabyteDB              *"
+  echo
+  echo "   Syntax: ./run [tpccbenchmark | sysbench | yb-sample-apps | ycsb] [params]  "
+  echo
+  echo "******************************************************************************"
+}
+
+case $1 in
+  tpccbenchmark)
+    echo "***************************** TPCC BENCHMARK *********************************"
+    cd /home/centos/code/tpcc
+    ./tpccbenchmark "$@"
+    ;;
+  sysbench)
+    echo "***************************** SYSBENCH BENCHMARK *****************************"
+    cd /home/centos/code/sysbench
+    "$@"
+    ;;
+  yb-sample-apps)
+
+    echo "******************************* YB-SAMPLE-APPS *******************************"
+    cd /home/centos/code/yb-sample-apps/target
+    java -jar yb-sample-apps.jar "$@"
+    ;;
+  ycsb)
+    echo "************************************ YCSB ************************************"
+    cd /home/centos/code/YCSB
+    ./bin/ycsb "$@"
+    ;;
+  *)
+    echo
+    echo "******************************************************************************"
+    echo "*               Please provide one of the allowed options.                   *"
+    Helper
+    ;;
+esac
