@@ -1,4 +1,4 @@
-# YB-Bench
+# ybbench
 ----------------------------------------------------------
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](https://docs.yugabyte.com/)
@@ -7,10 +7,10 @@
 [![Analytics](https://yugabyte.appspot.com/UA-104956980-4/home?pixel&useReferer)](https://github.com/yugabyte/ga-beacon)
 
 
-* [What is YBBENCH Docker Container?](#what-is-yb-benchmark-docker-container)
+* [What is ybbench Docker Container?](#what-is-yb-benchmark-docker-container)
 * [How to use](#how-to-use)
 * [Build from source code](#build-from-source-code)
-* [YBBENCH In Interactive Mode](#ybbench-in-interactive-mode)
+* [ybbench In Interactive Mode](#ybbench-in-interactive-mode)
 
 ## What is YB-Bench Docker Container?
 This benchmark docker container is a way to easily run various benchmarks on the YugabyteDB.
