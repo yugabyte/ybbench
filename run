@@ -12,14 +12,7 @@ Helper () {
   echo "******************************************************************************"
   echo "*         This tool is used to run the benchmarks on YugabyteDB              *"
   echo
-  echo "   Syntax: ./run [tpccbenchmark/sysbench/yb-sample-apps/ycsb] [params]  "
-  echo
-  echo "    Benchmark Options:                                                        "
-  echo
-  echo "        tpccbenchmark                 to run tpcc benchmark.                  "
-  echo "        sysbench                      to run sysbench benchmark               "
-  echo "        yb-sample-apps                to run yb-sample-apps                   "
-  echo "        ycsb                          to run ycsb benchmark                   "
+  echo "   Syntax: ./run [tpccbenchmark | sysbench | yb-sample-apps | ycsb] [params]  "
   echo
   echo "******************************************************************************"
 }

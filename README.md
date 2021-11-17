@@ -19,7 +19,7 @@ This includes following benchmarks pre-installed and ready to be used:
 1. [TPC-C](https://github.com/yugabyte/tpcc)
 2. [SYSBENCH](https://github.com/yugabyte/sysbench)
 3. [YCSB](https://github.com/yugabyte/ycsb)
-4. [YB-SAMPLE-APPS](https://github.com/yugabyte/yb-sample-apps)
+4. [yb-sample-apps](https://github.com/yugabyte/yb-sample-apps)
 
 ## How to use.
 - #### Pull the docker image
@@ -39,18 +39,11 @@ This includes following benchmarks pre-installed and ready to be used:
   ******************************************************************************
   *         This tool is used to run the benchmarks on YugabyteDB              *
 
-     Syntax: ./run [tpccbenchmark/sysbench/yb-sample-apps/ycsb] [params]
-
-      Benchmark Options:
-
-          tpccbenchmark                 to run tpcc benchmark.
-          sysbench                      to run sysbench benchmark
-          yb-sample-apps                to run yb-sample-apps
-          ycsb                          to run ycsb benchmark
+     Syntax: ./run [tpccbenchmark | sysbench | yb-sample-apps | ycsb] [params]  
 
   ******************************************************************************
   ```
-- #### Get specific benchmark help(-h/--help)
+- #### Benchmark Help(-h/--help)
    ```shell
     docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run <benchmark> --help
     # example:
@@ -116,40 +109,40 @@ This includes following benchmarks pre-installed and ready to be used:
     ```
 ## Build from source code
 You can build the docker image from the specific branches of respective benchmark repositories.
-1. Clone this repository
+1. Clone Repository
     ```shell
     git clone https://github.com/yugabyte/ybbench.git
     ```
-2. change dir and run docker build
+2. Run docker build
     ```shell
     cd ybbench
     # master branches is used by default if not specified
     docker build -t ybbench:0.1 .
     ```
-    To build from specific branch
+    Docker Build with Specific Branch
     ```shell
     docker build -t ybbench:0.1 --build-arg tpcc_branch=<my-branch> \
     --build-arg sysbench_branch=<my-branch> --build-arg sample_apps_branch=<my-branch> \
     --build-arg ycsb_branch=<my-branch> .
     ```
 
-## YBBENCH in interactive mode
-Before running any benchmarks you may want to modify/override certain properties files like:
-1. [workload_all.xml](https://github.com/yugabyte/tpcc/blob/master/config/workload_all.xml) file in TPCC
-2. YSQL [db.properties](https://github.com/yugabyte/YCSB/blob/master/yugabyteSQL/db.properties) or YCQL [db.properties](https://github.com/yugabyte/YCSB/blob/master/yugabyteCQL/db.properties) file in ycsb
+## ybbench in interactive mode
+You can run ybbench using docker's interactive mode.
 
-
-To achieve this, you can run the ybbench in interactive mode using following docker run command. With interactive mode, you can modify the workload specific params for respective workload and run the benchmark.
    ```shell
     docker run --name ybbench --rm -it yugabytedb/ybbench:latest bash
     
-    #inside the docker container, the code is located in /home/centos/code
-    cd /home/centos/code/<benchmark_repo_name>
-    
-    # modify the respective properties files and run the benchmark
-    cd /home/centos/
+    # Run the benchmark
     ./run <benchmark> <params>
    ```
+You can also run ybbench in detached mode.
+  ```shell
+    # -d for detached mode
+    docker run -d --name ybbench --rm -it yugabytedb/ybbench:latest bash
+    
+    # docker exec into the running container
+    docker exec -it ybbench bash
+```
 
 <img src="https://www.yugabyte.com/wp-content/uploads/2021/05/yb_horizontal_alt_color_RGB.png" align="center" alt="YugabyteDB" width="50%"/>
 
