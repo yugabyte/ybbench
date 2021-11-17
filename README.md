@@ -9,8 +9,9 @@
 
 * [What is ybbench Docker Container?](#what-is-ybbench-docker-container)
 * [How to use](#how-to-use)
-* [Build from source code](#build-from-source-code)
 * [ybbench In Interactive Mode](#ybbench-in-interactive-mode)
+* [Build from source](#build-from-source)
+
 
 ## What is ybbench Docker Container?
 This benchmark docker container is a way to easily run various benchmarks on the YugabyteDB.
@@ -111,24 +112,6 @@ This includes following benchmarks pre-installed and ready to be used:
     ```shell
     docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run yb-sample-apps --workload CassandraKeyValue --value_size 16 --num_unique_keys 1000000 --num_threads_read 0 --num_threads_write 256 --nodes <node1-ip>:9042,<node2-ip>:9042,<node3-ip>:9042 --use_ascii_values create_table_name PerfTest_0 --output_json_metrics 
     ```
-## Build from source code
-You can build the docker image from the specific branches of respective benchmark repositories.
-1. Clone Repository
-    ```shell
-    git clone https://github.com/yugabyte/ybbench.git
-    ```
-2. Run docker build
-    ```shell
-    cd ybbench
-    # master branches is used by default if not specified
-    docker build -t ybbench:0.1 .
-    ```
-    Docker Build with Specific Branch
-    ```shell
-    docker build -t ybbench:0.1 --build-arg tpcc_branch=<my-branch> \
-    --build-arg sysbench_branch=<my-branch> --build-arg sample_apps_branch=<my-branch> \
-    --build-arg ycsb_branch=<my-branch> .
-    ```
 
 ## ybbench in interactive mode
 You can run ybbench using docker's interactive mode.
@@ -147,6 +130,25 @@ You can also run ybbench in detached mode.
     # docker exec into the running container
     docker exec -it ybbench bash
 ```
+
+## Build from source
+You can build the docker image from the specific branches of respective benchmark repositories.
+1. Clone Repository
+    ```shell
+    git clone https://github.com/yugabyte/ybbench.git
+    ```
+2. Run docker build
+    ```shell
+    cd ybbench
+    # master branches is used by default if not specified
+    docker build -t ybbench:0.1 .
+    ```
+    Docker Build with Specific Branch
+    ```shell
+    docker build -t ybbench:0.1 --build-arg tpcc_branch=<my-branch> \
+    --build-arg sysbench_branch=<my-branch> --build-arg sample_apps_branch=<my-branch> \
+    --build-arg ycsb_branch=<my-branch> .
+    ```
 
 <img src="https://www.yugabyte.com/wp-content/uploads/2021/05/yb_horizontal_alt_color_RGB.png" align="center" alt="YugabyteDB" width="50%"/>
 
