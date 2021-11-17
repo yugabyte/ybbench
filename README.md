@@ -7,17 +7,17 @@
 [![Analytics](https://yugabyte.appspot.com/UA-104956980-4/home?pixel&useReferer)](https://github.com/yugabyte/ga-beacon)
 
 
-* [What is ybbench Docker Container?](#what-is-yb-benchmark-docker-container)
+* [What is ybbench Docker Container?](#what-is-ybbench-docker-container)
 * [How to use](#how-to-use)
 * [Build from source code](#build-from-source-code)
 * [ybbench In Interactive Mode](#ybbench-in-interactive-mode)
 
-## What is YB-Bench Docker Container?
+## What is ybbench Docker Container?
 This benchmark docker container is a way to easily run various benchmarks on the YugabyteDB.
 
 This includes following benchmarks pre-installed and ready to be used:
-1. [TPC-C](https://github.com/yugabyte/tpcc)
-2. [SYSBENCH](https://github.com/yugabyte/sysbench)
+1. [TPCC](https://github.com/yugabyte/tpcc)
+2. [Sysbench](https://github.com/yugabyte/sysbench)
 3. [YCSB](https://github.com/yugabyte/ycsb)
 4. [yb-sample-apps](https://github.com/yugabyte/yb-sample-apps)
 
