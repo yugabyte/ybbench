@@ -47,7 +47,7 @@ RUN cp target/yb-sample-apps.jar /home/centos/code
 
 # TODO: build the ycsb code
 WORKDIR /home/centos/code/YCSB
-RUN mvn clean package -DskipTests
+RUN mvn -pl yugabyteSQL,yugabyteCQL -am clean package -DskipTests
 
 # change the working direcotry
 WORKDIR /home/centos
