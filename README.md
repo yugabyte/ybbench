@@ -90,10 +90,10 @@ This includes following benchmarks pre-installed and ready to be used:
      Info about ycsb specific parameters can be found [here](https://github.com/yugabyte/ycsb).
     ```shell
     # load
-    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run ycsb load basic -P workloads/workloada
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run ycsb load yugabyteCQL -P yugabyteCQL/db.properties -P workloads/workloada
      
     # run
-    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run ycsb run basic -P workloads/workloada
+    docker run --name ybbench --rm -it yugabytedb/ybbench:latest ./run ycsb run yugabyteCQL -P yugabyteCQL/db.properties -P workloads/workloada
     ```
     To modify the workload related properties in YCSB -[db.properties](https://github.com/yugabyte/YCSB/blob/master/yugabyteSQL/db.properties), you can mount the file as a volume.
     ```shell

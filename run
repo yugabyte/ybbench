@@ -21,23 +21,23 @@ case $1 in
   tpccbenchmark)
     echo "***************************** TPCC BENCHMARK *********************************"
     cd /home/centos/code/tpcc
-    ./tpccbenchmark "$@"
+    ./tpccbenchmark "${@:2}"
     ;;
   sysbench)
     echo "***************************** SYSBENCH BENCHMARK *****************************"
     cd /home/centos/code/sysbench
-    "$@"
+    sysbench "${@:2}"
     ;;
   yb-sample-apps)
 
     echo "******************************* YB-SAMPLE-APPS *******************************"
     cd /home/centos/code/yb-sample-apps/target
-    java -jar yb-sample-apps.jar "$@"
+    java -jar yb-sample-apps.jar "${@:2}"
     ;;
   ycsb)
     echo "************************************ YCSB ************************************"
     cd /home/centos/code/YCSB
-    ./bin/ycsb "$@"
+    ./bin/ycsb "${@:2}"
     ;;
   *)
     echo
