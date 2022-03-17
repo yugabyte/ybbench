@@ -1,6 +1,6 @@
 # Copyright (c) YugaByte, Inc.
 
-FROM centos:8
+FROM centos:7
 
 ARG tpcc_branch=master
 ARG sysbench_branch=master
@@ -15,12 +15,6 @@ WORKDIR /home/centos/code
 RUN yum install -y java-1.8.0-openjdk-devel wget git vim unzip maven python2
 RUN yum install -y make automake libtool pkgconfig libaio-devel postgresql-devel
 
-# install ant
-RUN wget https://downloads.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip
-RUN unzip apache-ant-*
-RUN mv apache-ant-1.9.16 /opt/ant
-RUN ln -s /opt/ant/bin/ant /usr/bin/ant
-
 # clone required github repositories
 RUN git clone https://github.com/yugabyte/tpcc.git -b $tpcc_branch
 RUN git clone https://github.com/yugabyte/sysbench.git -b $sysbench_branch
@@ -28,7 +22,7 @@ RUN git clone https://github.com/yugabyte/yb-sample-apps.git -b $sample_apps_bra
 RUN git clone https://github.com/yugabyte/YCSB.git -b $ycsb_branch
 
 # build tpcc code
-WORKDIR /home/centos/tpcc
+WORKDIR /home/centos/code/tpcc
 RUN mvn clean install -DskipTests
 RUN "tar -xf target/tpcc.tar.gz –C /home/centos/code"
 
