@@ -20,7 +20,7 @@ Helper () {
 case $1 in
   tpccbenchmark)
     echo "***************************** TPCC BENCHMARK *********************************"
-    cd /home/centos/code/tpcc/tpcc
+    cd /home/centos/code/tpcc
     ./tpccbenchmark "${@:2}"
     ;;
 
