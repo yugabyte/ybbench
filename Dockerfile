@@ -1,6 +1,6 @@
 # Copyright (c) YugaByte, Inc.
 
-FROM centos:7
+FROM almalinux:8
 
 ARG tpcc_branch=master
 ARG sysbench_branch=master
