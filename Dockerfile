@@ -25,7 +25,7 @@ RUN git clone https://github.com/yugabyte/YCSB.git -b $ycsb_branch
 WORKDIR /home/centos/code/tpcc
 RUN mvn clean install -DskipTests
 RUN tar -xf target/tpcc.tar.gz
-RUN mkdir /tmp/tpcc; cp tpcc/* /tmp/tpcc; rm -rf /home/centos/code/tpcc; cp /tmp/tpcc/* /home/centos/code/tpcc
+RUN mkdir /tmp/tpcc; cp -r tpcc/* /tmp/tpcc; rm -rf /home/centos/code/tpcc/*; cp -r /tmp/tpcc/* /home/centos/code/tpcc
 
 # build the sysbench code
 WORKDIR /home/centos/code/sysbench
