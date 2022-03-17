@@ -24,6 +24,7 @@ case $1 in
     ./tpccbenchmark "${@:2}"
     ;;
   sysbench)
+
     echo "***************************** SYSBENCH BENCHMARK *****************************"
     cd /home/centos/code/sysbench
     sysbench "${@:2}"
@@ -35,6 +36,7 @@ case $1 in
     java -jar yb-sample-apps.jar "${@:2}"
     ;;
   ycsb)
+
     echo "************************************ YCSB ************************************"
     cd /home/centos/code/YCSB
     ./bin/ycsb "${@:2}"

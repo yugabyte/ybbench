@@ -28,10 +28,9 @@ RUN git clone https://github.com/yugabyte/yb-sample-apps.git -b $sample_apps_bra
 RUN git clone https://github.com/yugabyte/YCSB.git -b $ycsb_branch
 
 # build tpcc code
-WORKDIR /home/centos/code/tpcc
-RUN ant bootstrap
-RUN ant resolve
-RUN ant build
+WORKDIR /home/centos/tpcc
+RUN mvn clean install -DskipTests
+RUN "tar -xf target/tpcc.tar.gz –C /home/centos/code"
 
 # build the sysbench code
 WORKDIR /home/centos/code/sysbench
