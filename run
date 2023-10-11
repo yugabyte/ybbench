@@ -31,7 +31,7 @@ case $1 in
   yb-sample-apps)
 
     echo "******************************* YB-SAMPLE-APPS *******************************"
-    cd /home/centos/code/yb-sample-apps/target
+    cd /home/centos/code/
     java -jar yb-sample-apps.jar "${@:2}"
     ;;
   ycsb)
