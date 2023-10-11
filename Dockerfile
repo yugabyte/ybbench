@@ -14,6 +14,7 @@ WORKDIR /home/centos/code
 # install required binaries
 RUN yum install -y java-1.8.0-openjdk-devel wget git vim unzip maven python2
 RUN yum install -y make automake libtool pkgconfig libaio-devel postgresql-devel
+RUN ln -sf /usr/bin/python2 /usr/bin/python
 
 # install ant
 RUN wget https://downloads.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip
