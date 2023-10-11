@@ -33,6 +33,7 @@ WORKDIR /home/centos/code/tpcc
 RUN ant bootstrap
 RUN ant resolve
 RUN ant build
+RUN rm -rf .git src stand-alone-testing-of-alt-sql-from-proc-solns tools build.xml ivy.xml ivysettings.xml manifest.mf run_scripts tpcc.iml pom.xml 
 
 # build the sysbench code
 WORKDIR /home/centos/code/sysbench
@@ -52,6 +53,7 @@ RUN mvn -pl yugabyteSQL,yugabyteCQL -am clean package -DskipTests
 
 # change the working direcotry
 WORKDIR /home/centos
+RUN rm -rf code/apache-ant* code/yb-sample-apps
 
 # change the runner file permissions
 RUN chmod 777 run
