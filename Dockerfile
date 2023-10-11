@@ -41,6 +41,7 @@ RUN ./autogen.sh
 RUN ./configure --without-mysql --with-pgsql
 RUN make -j
 RUN make install
+RUN rm -rf .git
 
 # build the yb-sample-apps jar
 WORKDIR /home/centos/code/yb-sample-apps
@@ -50,6 +51,7 @@ RUN cp target/yb-sample-apps.jar /home/centos/code
 # TODO: build the ycsb code
 WORKDIR /home/centos/code/YCSB
 RUN mvn -pl yugabyteSQL,yugabyteCQL -am clean package -DskipTests
+RUN rm -rf .git
 
 # change the working direcotry
 WORKDIR /home/centos
