@@ -16,12 +16,6 @@ RUN yum install -y java-1.8.0-openjdk-devel wget git vim unzip maven python2
 RUN yum install -y make automake libtool pkgconfig libaio-devel postgresql-devel
 RUN ln -sf /usr/bin/python2 /usr/bin/python
 
-# install ant
-RUN wget https://downloads.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip
-RUN unzip apache-ant-*
-RUN mv apache-ant-1.9.16 /opt/ant
-RUN ln -s /opt/ant/bin/ant /usr/bin/ant
-
 # clone required github repositories
 RUN git clone https://github.com/yugabyte/tpcc.git -b $tpcc_branch
 RUN git clone https://github.com/yugabyte/sysbench.git -b $sysbench_branch
@@ -30,9 +24,12 @@ RUN git clone https://github.com/yugabyte/YCSB.git -b $ycsb_branch
 
 # build tpcc code
 WORKDIR /home/centos/code/tpcc
-RUN ant bootstrap
-RUN ant resolve
-RUN ant build
+RUN mvn clean install -DskipTests
+RUN tar -xf target/tpcc.tar.gz
+RUN mkdir /tmp/tpcc; \
+    cp -r tpcc/* /tmp/tpcc; \
+    rm -rf /home/centos/code/tpcc/*; \
+    cp -r /tmp/tpcc/* /home/centos/code/tpcc
 
 # build the sysbench code
 WORKDIR /home/centos/code/sysbench
